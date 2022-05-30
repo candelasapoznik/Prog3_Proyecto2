@@ -1,0 +1,1 @@
+//this.props.info.caption
