@@ -1,12 +1,12 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from '../screens/Home/Home'
-import Login from '../screens/Login/Login'
-import Register from '../screens/Register/Register'
+import Home from '../../../src/screens/Home/Home'
+import Login from '../../../src/screens/Login/Login'
+import Register from '../../../src/screens/Register/Register'
 
 const tab = createBottomTabNavigator()
-class Menu extends Component {
+class TavNav extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -44,4 +44,4 @@ render(){
     )
 }
 }
-export default Menu;
+export default TavNav;
