@@ -11,6 +11,9 @@ class UserPostSearcher extends Component {
             postEncontrados:[]
         }
     }
+    componentDidMount(){
+        
+    }
     onSubmit(datoFormulario){
         db.collection('posts').where('owner', '==', datoFormulario).onSnapshot((docs)=>{
             let arrayDocs=[]
@@ -28,17 +31,27 @@ class UserPostSearcher extends Component {
         <View>
             <View>
                 <TextInput 
+                keyboardType='email-adress'
                 placeholder='Escribe aquí el usuario'
                 onChangeText={ text => this.setState({valorFomulario:text})} />
                 <TouchableOpacity onPress={() => this.onSubmit(this.state.valorFormulario)}>
                     <Text>Enviar</Text>
                 </TouchableOpacity>
             </View>
+        
             <View>
-                <FlatList>
-
-                </FlatList>
+            { 
+                this.postEncontrados.lenght == 0 ?
+                'El usuario no existe o aún no tiene publicaciones'
+                :
+                <FlatList 
+                    data={ this.state.postEncontrados }
+                    keyExtractor={ item => item.id.toString()}
+                    renderItem={({item}) => <Post info={item}/>}
+                />
+            }
             </View>
+           
         </View>
     )
   }
