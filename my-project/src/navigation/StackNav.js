@@ -1,8 +1,12 @@
+import React, {Component} from 'react'
+import { auth, db } from '../firebase/config';
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "../screens/Login";
 import Register from "../screens/Register"
 import Home from "../screens/Home"
+import Comments from '../screens/Comments';
 const stack= createNativeStackNavigator();
 import { auth } from "../Firebase/config";
 
@@ -65,6 +69,13 @@ class StackNav extends Component {
                             options = {{headerShown: false}}
                             initialParams = {{register : (mail, pass) => this.register(mail, pass)}}
                         />
+                        <Stack.Screen
+                                name='Comment'
+                                component={Comment}
+                                initialParams={{
+                                    newComment: (comment)=> this.Comment(comment)                                    
+                                }}
+                            />              
                     </Stack.Group>
                     }
                 </Stack.Navigator>
