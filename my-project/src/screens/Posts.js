@@ -40,7 +40,7 @@ class Post extends Component {
         .then(()=>{
             this.setState({
               like: true,
-                quantityLikes: this.state.quantityLikes + 1
+              quantityLikes: this.state.quantityLikes + 1
             })
         })
         .catch((error)=> console.log(error))
@@ -49,7 +49,7 @@ class Post extends Component {
     unlike(){
         this.setState({
           like: false,
-            quantityLikes: this.state.quantityLikes - 1
+          quantityLikes: this.state.quantityLikes - 1
         })
     }
 
