@@ -41,7 +41,7 @@ class Home extends Component {
                     <FlatList
                         data={this.state.data}
                         keyExtractor={(item)=> item.id.toString()}
-                        renderItem={({item}) => <Post info={item}/>}
+                        renderItem={({item}) => <Posts info={item}/>}
                     
                     />
                 </View>
