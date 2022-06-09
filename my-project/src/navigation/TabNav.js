@@ -38,6 +38,12 @@ render(){
                         options={
                             { tabBarIcon: () => <Entypo name="home" size={24} color="black" /> }
                         }/>
+                    <Tab.Screen 
+                        name='Post' 
+                        component={ Post }
+                        options={
+                            { tabBarIcon: () => <Entypo name="Post" size={24} color="black" /> }
+                        }/></Tab.Navigator>
 
                </Tab.Navigator>
            </NavigationContainer> 
