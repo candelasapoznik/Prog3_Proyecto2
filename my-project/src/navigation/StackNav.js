@@ -48,13 +48,14 @@ class StackNav extends Component {
         auth.signOut()
         .then(() => this.setState({logueado: false}))
     }
-    newPosts(post){
+    newPosts(post, urlfoto){
         db.collection('posts').add({
             email:auth.currentUser.email,
             createdAt: Date.now(),
             post:post,
             likes:[],
-            postDescription:[]
+            postDescription:[],
+            foto: urlfoto
         })
         .then(response => console.log(response))
         .catch(error => console.log(error.post))
@@ -65,12 +66,29 @@ class StackNav extends Component {
                 <Stack.Navigator>
                     {
                     this.state.logueado ?
+                    <stack.Group>
                     <Stack.Screen 
                         name='TabNavigation'
                         component ={ TabNavigation }
                         options = {{headerShown: false}}
                         initialParams = {{logout : (mail, pass) => this.logout(mail, pass)}}
                     />
+                    <stack.Screen
+                        name='NewPost'
+                        component={NewPost}
+                        initialParams={
+                            {NewPost: (post,urlfoto)=>this.NewPost(post,urlfoto)}
+                        }
+                    />
+                    <Stack.Screen
+                        name='Comment'
+                        component={Comment}
+                        initialParams={{
+                            newComment: (comment)=> this.Comment(comment)                                    
+                        }}
+                    />     
+
+                    </stack.Group>
                     :
                     <Stack.Group>
                         <Stack.Screen 
@@ -84,14 +102,7 @@ class StackNav extends Component {
                             component = { Register }
                             options = {{headerShown: false}}
                             initialParams = {{register : (mail, pass) => this.register(mail, pass)}}
-                        />
-                        <Stack.Screen
-                                name='Comment'
-                                component={Comment}
-                                initialParams={{
-                                    newComment: (comment)=> this.Comment(comment)                                    
-                                }}
-                            />              
+                        />         
                     </Stack.Group>
                     }
                 </Stack.Navigator>

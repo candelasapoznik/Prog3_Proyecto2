@@ -17,7 +17,7 @@ export default function TabNavigation(props) {
             logout: () => logout()
         }}
         />
-        <tab.Screen name='myCamera' component={MyCamera}/>
+    <tab.Navigator name='NewPost'
     </Tab.Navigator>
     )}
 
