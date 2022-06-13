@@ -8,22 +8,21 @@ class UserPostSearcher extends Component {
         super(props)
         this.state={
             valorFormulario: '',
-            postEncontrados:[]
+            postEncontrados:[],
+            firstRender: true
         }
     }
-    componentDidMount(){
-        
-    }
     onSubmit(datoFormulario){
-        db.collection('posts').where('owner', '==', datoFormulario).onSnapshot((docs)=>{
-            let arrayDocs=[]
-            docs.forEach((doc) => {
-                arrayDocs.push({
-                    id: doc.id,
-                    data: doc.data()
+        db.collection('posts').where('owner', '==', datoFormulario).onSnapshot(
+            (docs)=>{
+                let arrayDocs=[]
+                docs.forEach((doc) => {
+                    arrayDocs.push({
+                        id: doc.id,
+                        data: doc.data()
+                    })
                 })
-            })
-            this.setState({postEncontrados:arrayDocs})
+                this.setState({postEncontrados:arrayDocs, firstRender:false})
         })
     }
   render() {
@@ -38,6 +37,10 @@ class UserPostSearcher extends Component {
                     <Text>Enviar</Text>
                 </TouchableOpacity>
             </View>
+            {
+
+            this.firstRender ?
+            <> </> :
         
             <View>
             { 
@@ -46,12 +49,12 @@ class UserPostSearcher extends Component {
                 :
                 <FlatList 
                     data={ this.state.postEncontrados }
-                    keyExtractor={ item => item.id.toString()}
                     renderItem={({item}) => <Post info={item}/>}
+                    keyExtractor={ item => item.id.toString()}
                 />
             }
             </View>
-           
+           }
         </View>
     )
   }
