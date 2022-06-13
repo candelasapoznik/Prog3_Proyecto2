@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 import { auth, db } from '../firebase/config';
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "../screens/Login";
 import Register from "../screens/Register"
 import Home from "../screens/Home"
 import Comments from '../screens/Comments';
-import TabNavigation from './TabNav';
-const stack= createNativeStackNavigator();
+
+const Stack= createNativeStackNavigator();
 
 class StackNav extends Component {
 

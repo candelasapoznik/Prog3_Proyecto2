@@ -1,8 +1,7 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
-import { TouchableOpacity } from 'react-native-web'
 import { FontAwesome } from '@expo/vector-icons'
-import { auth, db } from '../../firebase/config'
+import { auth, db } from '../firebase/config'
 import firebase from 'firebase'
 
 class Post extends Component {
@@ -117,4 +116,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Posts
+export default Post

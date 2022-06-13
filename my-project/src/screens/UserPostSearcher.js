@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, TextInput, TouchableOpacity, Text, FlatList } from 'react-native'
-import { db } from '../Firebase/Config'
+import { db } from '../firebase/Config'
 
 
 class UserPostSearcher extends Component {

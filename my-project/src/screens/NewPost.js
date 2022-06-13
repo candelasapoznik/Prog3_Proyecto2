@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {Text, View, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
-//import db
-import { auth, db } from '../Firebase/Config'
+import { auth, db } from '../firebase/config'
 
 class NewPost extends Component {
   constructor(props){

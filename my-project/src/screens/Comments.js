@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import { db, auth } from '../firebase/config'
 import firebase from 'firebase'
@@ -34,7 +34,7 @@ import firebase from 'firebase'
             return false
         }
         db.collection('posts').doc(this.props.route.params.id).update({
-            comments: firebase.firestore.FieldValue.arrayUnion(comment)
+            comments: firebase.firestore.FieldValue.arrayUnion(comments)
         })
             .then(() => this.setState({ newComment: '' }))
             .catch((error) => console.log(error))
