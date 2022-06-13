@@ -7,36 +7,52 @@ class NewPost extends Component {
     super(props)
     this.state ={
       caption: '',
+      photo: "",
+      showCamera: true,
 
     }
   }
   Submit(caption){
     //llamo a db y accedo a su método collection donde le paso el string de post. uso el método add que recibe
     db.collection("Posts").add({
-      owner:auth.currentUser.email,
+      email:auth.currentUser.email,
       createdAt: Date.now(),
-      postDecription: caption
+      postDecription: caption,
+      photo: this.state.photo,
+      likes: [], //Para lograr controlar los Likes
+      comments: [], //Para lograr almacenar los comentarios
     })
     .then()
     .catch(e => console.log(e))
   }
   render() {
     return (
-      <View style={styles.container}>
-          <Text>Agregar posteo</Text>
-          <TextInput 
-              style={styles.field}
-              keyboardType= 'default'
-              placeholder='Caption'
-              onChangeText={text => this.setState({caption:text})}
-          />
-          <TouchableOpacity OnPress={ ()=> this.Submit(this.state.caption) } >  //le paso el this.state.caption que luego va a pasar como parámetro en el método submit
-              <Text>Enviar</Text>
-          </TouchableOpacity>
+      <>
+        {
+          this.state.showCamera ?
 
-      </View>
-    )
-  }
+          <MyCamera onImageUpload={(URL)=>this.onImageUpload(URL)} />
+
+          :
+
+          <View style={styles.container}>
+            <Text style={styles.titulo}>¿Qué vas a publicar hoy?</Text>
+            <Image source={{ uri: this.state.photo }} style={styles.image} />
+              <Text>Agregar posteo</Text>
+              <TextInput 
+                  style={styles.field}
+                  keyboardType= 'default'
+                  placeholder='Caption'
+                  onChangeText={text => this.setState({caption: text})}
+              />
+              <TouchableOpacity OnPress={ ()=> this.Submit(this.state.caption) } >
+                  <Text>Enviar</Text>
+              </TouchableOpacity>
+          </View>
+        }
+      </>
+      )
+    }
 }
 const styles = StyleSheet.create({
   container:{
