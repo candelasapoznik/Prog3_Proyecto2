@@ -56,30 +56,65 @@ class Post extends Component {
     render() {
         const { style, info } = this.props
         return (
-            <View style={style.post}>
-                <Text>{info.data.description}</Text>
-                <View style={style.divLikes}>
+            <View style={styles.container}>
+                <Text style={styles.text}>{info.data.description}</Text>
+                <View style={styles.button}>
                     <Text>{this.state.quantityLikes}</Text>
                     {
                         this.state.like
                             ?
-
-                            <TouchableOpacity onPress={() => this.unlike()}>
+                            <TouchableOpacity style={styles.unlike} onPress={() => this.unlike()}>
                                 <FontAwesome name='heart' size={24} color='red' />
                             </TouchableOpacity>
                             :
-                            <TouchableOpacity onPress={() => this.like()}>
+                            <TouchableOpacity style={styles.like} onPress={() => this.like()}>
                                 <FontAwesome name='heart-o' size={24} color='black' />
                             </TouchableOpacity>
-
                     }
                 </View>
-                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comments',{id: this.props.info.id})}>
-                    <Text>Comentar</Text>
+                <TouchableOpacity style={styles.comment} onPress={()=> this.props.navigation.navigate('Comments',{id: this.props.info.id})}>
+                    <Text style={styles.touchableText}>Comentar</Text>
                 </TouchableOpacity>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        marginTop: 20,
+        marginHorizontal:10
+    },
+    likes: {
+        flexDirection:'row'
+    },
+    like:{
+        marginRight:8
+    },
+    unlike:{
+        marginRight:8
+    },
+    text:{
+        fontSize:15,
+        marginBottom:10,
+    },
+    button:{
+        padding: 10,
+        marginTop: 30,
+        borderRadius: 4,
+    },
+    comment:{
+        padding: 10,
+        backgroundColor: '#dc3545',
+        marginTop: 30,
+        borderRadius: 4,
+    },
+    touchableText:{
+        fontWeight: 'bold',
+        color:'#fff',
+        textAlign: 'center'
+    }
+});
+
 
 export default Posts
