@@ -6,6 +6,7 @@ import Login from "../screens/Login";
 import Register from "../screens/Register"
 import Home from "../screens/Home"
 import Comments from '../screens/Comments';
+import TabNavigation from './TabNav';
 
 const Stack= createNativeStackNavigator();
 
