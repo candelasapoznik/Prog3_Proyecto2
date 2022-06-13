@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import StackNav from './src/Navigation/StackNav';
 import Menu from './src/navigation/TabNav';
 
 export default function App() {
   return (
-   <Menu/>
+    <StackNav/>
   );
 }
 

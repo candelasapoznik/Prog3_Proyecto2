@@ -8,7 +8,6 @@ import Register from "../screens/Register"
 import Home from "../screens/Home"
 import Comments from '../screens/Comments';
 const stack= createNativeStackNavigator();
-import { auth } from "../Firebase/config";
 
 class StackNav extends Component {
 
@@ -35,6 +34,11 @@ class StackNav extends Component {
 
     register(mail, pass){
         auth.createUserWithEmailAndPassword(mail, pass)
+        .then(() => db.collection('users').add({
+            email: email,
+            userName: userName,
+            createdAt: Date.now(),
+        }).catch(error => console.log(error)))
             .then( response => this.setState({logueado: true}))
             .catch( error => console.log(error))
     }
@@ -42,6 +46,17 @@ class StackNav extends Component {
     logout(){ 
         auth.signOut()
         .then(() => this.setState({logueado: false}))
+    }
+    newPosts(post){
+        db.collection('posts').add({
+            email:auth.currentUser.email,
+            createdAt: Date.now(),
+            post:post,
+            likes:[],
+            postDescription:[]
+        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error.post))
     }
     render(){
         return(
@@ -83,4 +98,4 @@ class StackNav extends Component {
         )
     }
 }
-export default StackNav
+export default StackNav 
