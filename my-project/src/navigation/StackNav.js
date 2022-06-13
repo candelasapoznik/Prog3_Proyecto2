@@ -73,7 +73,7 @@ class StackNav extends Component {
                         options = {{headerShown: false}}
                         initialParams = {{logout : (mail, pass) => this.logout(mail, pass)}}
                     />
-                    <stack.Screen
+                    <Stack.Screen
                         name='NewPost'
                         component={NewPost}
                         initialParams={
