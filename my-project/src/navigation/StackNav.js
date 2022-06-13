@@ -6,13 +6,8 @@ import Login from "../screens/Login";
 import Register from "../screens/Register"
 import Home from "../screens/Home"
 import Comments from '../screens/Comments';
-<<<<<<< HEAD
 
 const Stack= createNativeStackNavigator();
-=======
-import TabNavigation from './TabNav';
-const stack= createNativeStackNavigator();
->>>>>>> 15a061356be554c1a3d73cb83d3384fceddbcca3
 
 class StackNav extends Component {
 

@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native'
-=======
-import { View, Text, TouchableOpacity, FlatList, TextInput } from 'react-native'
->>>>>>> 15a061356be554c1a3d73cb83d3384fceddbcca3
+import { View, Text, TouchableOpacity, FlatList, StyleSheet, TextInput } from 'react-native'
 import { db, auth } from '../firebase/config'
 import Posts from './Posts'
 import Loader from '../components/Loader';

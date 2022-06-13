@@ -23,11 +23,7 @@ import firebase from 'firebase'
 
         )
     }
-<<<<<<< HEAD
-    onSubmit(comments) {
-=======
     onSubmit(comentario) {
->>>>>>> 15a061356be554c1a3d73cb83d3384fceddbcca3
         const comment = {
             owner: auth.currentUser.email,
             createdAt: Date.now(),
