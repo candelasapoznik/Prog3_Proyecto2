@@ -17,7 +17,10 @@ export default function TabNavigation(props) {
             logout: () => logout()
         }}
         />
-    <tab.Navigator name='NewPost'
+    <Tab.Screen
+     name='NewPost'
+     component={NewPost}
+     initialParams={pos} />
     </Tab.Navigator>
     )}
 

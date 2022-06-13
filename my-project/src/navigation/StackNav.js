@@ -65,7 +65,7 @@ class StackNav extends Component {
                 <Stack.Navigator>
                     {
                     this.state.logueado ?
-                    <stack.Group>
+                    <Stack.Group>
                     <Stack.Screen 
                         name='TabNavigation'
                         component ={ TabNavigation }
@@ -87,7 +87,7 @@ class StackNav extends Component {
                         }}
                     />     
 
-                    </stack.Group>
+                    </Stack.Group>
                     :
                     <Stack.Group>
                         <Stack.Screen 
