@@ -3,7 +3,7 @@ import {ActivityIndicator} from 'react-native';
 
 function Loader() {
   return (
-    <ActivityIndicator size="big" color="red" />
+    <ActivityIndicator size="small" color="red" />
   )
 }
 

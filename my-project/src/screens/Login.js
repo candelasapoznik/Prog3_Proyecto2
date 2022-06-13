@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {auth} from '../Firebase/config'
+import {auth} from '../firebase/config'
 import {View,Text,TouchableOpacity,TextInput,StyleSheet} from 'react-native';
+
 
 class Login extends Component{
     constructor(props){
@@ -35,7 +36,10 @@ render(){
             />
             <TouchableOpacity onPress={()=>this.login(this.state.email, this.state.password)}>
                 <Text>Loguearme</Text>
-            </TouchableOpacity>       
+            </TouchableOpacity>   
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Register')}>
+            <Text> ¿No tienes una cuenta? Registrate </Text>
+            </TouchableOpacity>    
         </View>
         )
     }

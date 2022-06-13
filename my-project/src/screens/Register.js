@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {StyleSheet,View,TextInput,TouchableOpacity} from 'react-native'
-import {auth} from '../Firebase/config'
+import {StyleSheet,View,TextInput,TouchableOpacity, Text} from 'react-native'
+import {auth} from '../firebase/config'
+
 
 class Register extends Component {
     constructor(props){
@@ -12,9 +13,11 @@ class Register extends Component {
             Register:false,
             error:''
         }}
+
 register(email,pass){
     auth.createUserWithEmailAndPassword(email, pass)
     .then((response)=>{
+        console.log('hola')
         this.setState({registered:true});
     })
     .catch((e)=>{
@@ -31,18 +34,18 @@ render(){
 
                 <TextInput style={styles.imput}
                     keyboardtype= 'default' 
-                    placeholder='userName' 
+                    placeholder='User Name' 
                     onChangeText={text=> this.setState({userName: text})}/>
 
                 <TextInput style={styles.imput} 
                     keyboardtype= 'default'
-                    placeholder='password' 
-                    securityTextEntry={true} 
+                    placeholder='Password' 
+                    secureTextEntry={true} 
                     onChangeText={text=> this.setState({Password: text})}/>
 
-                <TouchableOpacity style={styles.botton}
-                    onpress={()=> this.onSubmit(this.state.email,this.state.Password)}>
-                    <text>Login</text>
+                <TouchableOpacity style={styles.button}
+                    onPress={()=> this.register(this.state.email,this.state.Password)}>
+                    <Text>Register</Text>
                 </TouchableOpacity>
         </View>
     )
@@ -53,7 +56,7 @@ const styles= StyleSheet.create({
         padding: 10,
         marginBottom:20,
     },
-    botton:{
+    button:{
         backgroundColor:'#28a745',
         paddingHorizontal:10,
         paddingVertical:6,
