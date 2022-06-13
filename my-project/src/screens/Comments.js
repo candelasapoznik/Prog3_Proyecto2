@@ -13,8 +13,8 @@ import firebase from 'firebase'
         }
     }
     componentDidMount() {
-        const idDoc = this.props.route.params.id
-        db.collection('posts').doc(idDoc).onSnapshot(
+        const id = this.props.route.params.id
+        db.collection('posts').doc(id).onSnapshot(
             (doc) => {
                 this.setState({
                     comments: doc.data().comments
@@ -36,32 +36,56 @@ import firebase from 'firebase'
         db.collection('posts').doc(this.props.route.params.id).update({
             comments: firebase.firestore.FieldValue.arrayUnion(comment)
         })
-            .then((response) => this.setState({ newComment: '' }))
-            .catch((err) => console.log(err))
+            .then(() => this.setState({ newComment: '' }))
+            .catch((error) => console.log(error))
     }
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <FlatList
                     data={this.state.comments}
                     keyExtractor={(item) => item.createdAt.toString()}
-                    renderItem={({ item }) => <Text>{item.desc}</Text>}
+                    renderItem={({ item }) => <Text>{item.description}</Text>}
 
                 />
-                <View>
-                    <TextInput
+                <View style={styles.container}>
+                    <TextInput style={styles.comment}
                         placeholder='Agrega tu comentario'
                         value={this.state.newComment}
                         keyboardType='default'
-                        onChangeText={(text) => this.setState({ newComment: comment })}
+                        onChangeText={(comment) => this.setState({ newComment: comment })}
                     />
-                    <TouchableOpacity onPress={() => this.onSubmit(this.state.newComment)}>
-                        <Text> COMENTAR </Text>
+                    <TouchableOpacity style={styles.button} onPress={() => this.onSubmit(this.state.newComment)}>
+                        <Text style={styles.touchableText}> COMENTAR </Text>
                     </TouchableOpacity>
                 </View>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        marginTop: 20,
+        marginHorizontal:10
+    },
+    button:{
+        padding: 10,
+        marginTop: 30,
+        borderRadius: 4,
+    },
+    comment:{
+        padding: 10,
+        backgroundColor: '#dc3545',
+        marginTop: 30,
+        borderRadius: 4,
+    },
+    touchableText:{
+        fontWeight: 'bold',
+        color:'#fff',
+        textAlign: 'center'
+    }
+});
+
 
 export default Comments
