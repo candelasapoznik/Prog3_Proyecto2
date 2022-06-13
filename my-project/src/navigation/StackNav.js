@@ -7,6 +7,7 @@ import Login from "../screens/Login";
 import Register from "../screens/Register"
 import Home from "../screens/Home"
 import Comments from '../screens/Comments';
+import TabNavigation from './TabNav';
 const stack= createNativeStackNavigator();
 
 class StackNav extends Component {
@@ -65,8 +66,8 @@ class StackNav extends Component {
                     {
                     this.state.logueado ?
                     <Stack.Screen 
-                        name='Home'
-                        component ={ Home }
+                        name='TabNavigation'
+                        component ={ TabNavigation }
                         options = {{headerShown: false}}
                         initialParams = {{logout : (mail, pass) => this.logout(mail, pass)}}
                     />
