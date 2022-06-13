@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, FlatList } from 'react-native'
-import { FlatList, TextInput } from 'react-native-web'
+import { View, Text, TouchableOpacity, FlatList, TextInput } from 'react-native'
 import { db, auth } from '../firebase/config'
 import Posts from '../components/Posts/Posts'
 import Loader from '../components/Loader';

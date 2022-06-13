@@ -23,11 +23,11 @@ import firebase from 'firebase'
 
         )
     }
-    onSubmit(comment) {
+    onSubmit(comentario) {
         const comment = {
             owner: auth.currentUser.email,
             createdAt: Date.now(),
-            description: comment
+            description: comentario
         }
         if (text.length === 0) {
             this.setState({ error: 'el comentario no puede estar vacio' })
