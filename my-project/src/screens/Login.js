@@ -12,11 +12,6 @@ class Login extends Component{
         }
     }
 
-login(mail, pass){
-    auth.signInWithEmailAndPassword(mail, pass)
-        .then( response => console.log(response))
-        .catch( error => console.log(error))      
-}
 render(){
     return(
         <View style={styles.container}>
@@ -34,7 +29,7 @@ render(){
                 secureTextEntry={true}
                 onChangeText={text => this.setState({ password: text})}
             />
-            <TouchableOpacity onPress={()=>this.login(this.state.email, this.state.password)}>
+            <TouchableOpacity onPress={()=>this.props.route.params.login(this.state.email, this.state.password)}>
                 <Text>Loguearme</Text>
             </TouchableOpacity>   
             <TouchableOpacity onPress={()=> this.props.navigation.navigate('Register')}>

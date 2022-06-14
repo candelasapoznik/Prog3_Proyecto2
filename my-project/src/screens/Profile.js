@@ -25,10 +25,24 @@ class Profile extends Component {
                         id: doc.id,
                         data: doc.data()
                     })
+                })
                 this.setState({
                     posts: posts,
                     loading: false
                 })
+            }
+        )
+        db.collection('users').where('email','==', auth.currentUser.email).onSnapshot(
+            docs => {
+                let user = {}
+                docs.forEach( doc => {
+                user={
+                    id: doc.id,
+                    data: doc.data()
+                }
+            })
+                this.setState({
+                    name: user.data.userName
                 })
             }
         )
@@ -42,18 +56,18 @@ class Profile extends Component {
                 <Loader/> :
                 <View>
                     <Text style={styles.tittle}>My profile</Text>
-                    <Text style={styles.subtittle}> Welcome: {this.props.owner.name}</Text>
+                    <Text style={styles.subtittle}> Welcome: {this.state.name}</Text>
                     <Text style={styles.text}> Email: {auth.currentUser.email}</Text>
-                    <Text style={styles.element}> Last sign in Time: {this.props.owner.lastSignInTime}</Text>
-                    <TouchableOpacity style={styles.touchable} onPress={()=>this.props.route.params.logout()}>
-                        <Text style={styles.touchableText}>Logout</Text>
-                    </TouchableOpacity>         
+                    <Text style={styles.element}> Last sign in Time: {auth.currentUser.metadata.lastSignInTime}</Text>
                     <Text style={styles.subtittle}>Posts:</Text>
                     <FlatList
                         data={this.state.data}
                         keyExtractor={(item)=> item.id.toString()}
                         renderItem={({item}) => <Posts style={styles.posts} info={item} navigation={this.props.route.params.navigation.posts}/>}
                     />
+                    <TouchableOpacity style={styles.touchable} onPress={()=>this.props.route.params.logout()}>
+                        <Text style={styles.touchableText}>Logout</Text>
+                    </TouchableOpacity>         
                 </View>
             }
         </View>  

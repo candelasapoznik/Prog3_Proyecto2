@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import {View, Text, TouchableOpacity, StyleSheet, Image, TextInput} from 'react-native'
 import {Camera} from 'expo-camera'
-import { storage } from '../../firebase/config'
+import { storage } from '../firebase/config'
 class MyCamera extends Component {
 
     constructor(props){
         super(props)
         this.state={
-            permisos: false,
+            permission: false,
             photo:'',
             showCamera: true,
+            urlFoto: ''
         }
+        
     }
 
 componentDidMount(){
@@ -25,11 +27,11 @@ componentDidMount(){
   }
 
   takePicture(){
-      this.metodosDeCamera.takePictureAsync()
+      this.metodosDeCamara.takePictureAsync()
       .then(photo=>{
         this.setState({
-            urlFoto: dataFoto.uri,
-            mostrarCamara:false
+            urlFoto: photo.uri,
+            showCamera:false
     })
 })
 .catch(error => console.log(error))
@@ -51,29 +53,32 @@ componentDidMount(){
             referenciaDelStorage.getDownloadURL()
             .then( url => {
                 console.log(url)
-                this.props.cuandoSubaLaImagen(url);
-                this.setState({photo:''})
+                this.setState({urlFoto:''})
+                this.props.cuandoSubaLaFoto(url);
             })
         })
     })
     .catch(error => console.log(error))
 }
-  }
+  
 
   descartarFoto(){
-    console.log('Foto descartada')
+    this.setState({
+        urlFoto: '',
+        showCamera:true
+    })
     //Aqui cambiar el estado de la urlFoto a '' y mostrarCamara a true
 }
   render(){
       return(
       <View style={styles.container}>
         {
-            this.state.permisos ?
+            this.state.permission ?
                 this.state.showCamera === false ?
                 <>
                     <Text>Aqui vamos a renderizar la imagen</Text>
                     <Image
-                    style={styles.camara}
+                    style={styles.camera}
                     source={{uri: this.state.urlFoto}}
                     />
                     <View style={styles.container}>
@@ -93,7 +98,7 @@ componentDidMount(){
                 :
                 <View style={styles.container}>
                     <Camera
-                        styles={styles.camara}
+                        style={styles.camera}
                         type={Camera.Constants.Type.back}
                         ref={ metodos => this.metodosDeCamara = metodos}
                     />
@@ -109,5 +114,14 @@ componentDidMount(){
     )
         
   }
+}
+const styles= StyleSheet.create({
+    container:{
+        flex:1
+    },
+  camera: {
+    flex: 1
+  }
+})
 
 export default MyCamera

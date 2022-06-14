@@ -19,6 +19,7 @@ export default function TabNavigation(props) {
         <Tab.Screen 
         name='Profile' 
         component={Profile} 
+        options={{ tabBarIcon: ()=> <FontAwesome name="user" size={24} color="black" />}}
         initialParams={{
             logout: () => logout()
         }}
@@ -26,7 +27,10 @@ export default function TabNavigation(props) {
     <Tab.Screen
      name='NewPost'
      component={NewPost}
-     initialParams={pos} />
+     options={{ tabBarIcon: ()=> <FontAwesome name="plus" size={24} color="black" />}}
+
+    //  initialParams={} 
+    />
     </Tab.Navigator>
     )}
 

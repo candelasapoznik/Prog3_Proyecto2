@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Text, View, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
 import { auth, db } from '../firebase/config'
-
+import MyCamera from '../components/MyCamera'
 class NewPost extends Component {
   constructor(props){
     super(props)
@@ -12,12 +12,12 @@ class NewPost extends Component {
 
     }
   }
-  Submit(caption){
+  submit(){
     //llamo a db y accedo a su método collection donde le paso el string de post. uso el método add que recibe
-    db.collection("Posts").add({
+    db.collection("posts").add({
       email:auth.currentUser.email,
       createdAt: Date.now(),
-      postDecription: caption,
+      postDecription: this.state.caption,
       photo: this.state.photo,
       likes: [], //Para lograr controlar los Likes
       comments: [], //Para lograr almacenar los comentarios
@@ -25,13 +25,19 @@ class NewPost extends Component {
     .then()
     .catch(e => console.log(e))
   }
+  cuandoSubaLaFoto(url){
+    this.setState({
+      photo: url,
+      showCamera: false
+    })
+  }
   render() {
     return (
       <>
         {
           this.state.showCamera ?
 
-          <MyCamera onImageUpload={(URL)=>this.onImageUpload(URL)} />
+          <MyCamera onImageUpload={(URL)=>this.cuandoSubaLaFoto(URL)} />
 
           :
 
@@ -45,7 +51,7 @@ class NewPost extends Component {
                   placeholder='Caption'
                   onChangeText={text => this.setState({caption: text})}
               />
-              <TouchableOpacity OnPress={ ()=> this.Submit(this.state.caption) } >
+              <TouchableOpacity OnPress={ ()=> this.submit() } >
                   <Text>Enviar</Text>
               </TouchableOpacity>
           </View>

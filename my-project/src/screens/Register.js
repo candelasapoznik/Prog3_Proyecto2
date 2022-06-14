@@ -14,16 +14,7 @@ class Register extends Component {
             error:''
         }}
 
-register(email,pass){
-    auth.createUserWithEmailAndPassword(email, pass)
-    .then((response)=>{
-        console.log('hola')
-        this.setState({registered:true});
-    })
-    .catch((e)=>{
-        this.setState({error:'fallo el registro'})
-    })
-}
+
 render(){
     return(
         <View style={styles.container}>
@@ -44,7 +35,7 @@ render(){
                     onChangeText={text=> this.setState({Password: text})}/>
 
                 <TouchableOpacity style={styles.button}
-                    onPress={()=> this.register(this.state.email,this.state.Password)}>
+                    onPress={()=> this.props.route.params.register(this.state.email,this.state.Password, this.state.userName)}>
                     <Text>Register</Text>
                 </TouchableOpacity>
         </View>

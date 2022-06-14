@@ -35,10 +35,10 @@ class StackNav extends Component {
             .catch( error => console.log(error))
     }
 
-    register(mail, pass){
+    register(mail, pass,userName){
         auth.createUserWithEmailAndPassword(mail, pass)
         .then(() => db.collection('users').add({
-            email: email,
+            email: mail,
             userName: userName,
             createdAt: Date.now(),
         }).catch(error => console.log(error)))
@@ -103,7 +103,7 @@ class StackNav extends Component {
                             name='Register'
                             component = { Register }
                             options = {{headerShown: false}}
-                            initialParams = {{register : (mail, pass) => this.register(mail, pass)}}
+                            initialParams = {{register : (mail, pass, userName) => this.register(mail, pass, userName)}}
                         />         
                     </Stack.Group>
                     }
