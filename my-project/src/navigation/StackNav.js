@@ -28,6 +28,7 @@ class StackNav extends Component {
         })
     }
     
+    
     login(mail, pass){
         auth.signInWithEmailAndPassword(mail, pass)
             .then( response => this.setState({logueado: true}))
