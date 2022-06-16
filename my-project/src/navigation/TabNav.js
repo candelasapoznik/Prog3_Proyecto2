@@ -6,7 +6,7 @@ import NewPost from '../screens/NewPost';
 import {FontAwesome} from '@expo/vector-icons'
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigation(props) {
+export default function Tabnavigation(props) {
   const {logout} = props.route.params
   
     return (

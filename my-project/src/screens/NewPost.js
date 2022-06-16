@@ -50,7 +50,7 @@ class NewPost extends Component {
                   placeholder='caption'
                   onChangeText={text => this.setState({caption: text})}
               />
-              <TouchableOpacity OnPress={ ()=> this.submit() } >
+              <TouchableOpacity onPress={ ()=> this.submit() } >
                   <Text>Agregar posteo</Text>
               </TouchableOpacity>
           </View>
