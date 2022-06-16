@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Text, View, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
+import {Text, View, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native'
 import { auth, db } from '../firebase/config'
 import MyCamera from '../components/MyCamera'
 class NewPost extends Component {
@@ -37,22 +37,21 @@ class NewPost extends Component {
         {
           this.state.showCamera ?
 
-          <MyCamera onImageUpload={(URL)=>this.cuandoSubaLaFoto(URL)} />
+          <MyCamera cuandoSubaLaFoto={(url)=>this.cuandoSubaLaFoto(url)} />
 
           :
 
           <View style={styles.container}>
             <Text style={styles.titulo}>¿Qué vas a publicar hoy?</Text>
             <Image source={{ uri: this.state.photo }} style={styles.image} />
-              <Text>Agregar posteo</Text>
               <TextInput 
                   style={styles.field}
                   keyboardType= 'default'
-                  placeholder='Caption'
+                  placeholder='caption'
                   onChangeText={text => this.setState({caption: text})}
               />
-              <TouchableOpacity OnPress={ ()=> this.submit() } >
-                  <Text>Enviar</Text>
+              <TouchableOpacity onPress={ ()=> this.submit() } >
+                  <Text>Agregar posteo</Text>
               </TouchableOpacity>
           </View>
         }
