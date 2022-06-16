@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import { auth, db } from '../firebase/config'
@@ -56,7 +56,8 @@ class Post extends Component {
         const { style, info } = this.props
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>{info.data.description}</Text>
+                <Image style={styles.text}>source={info.data.photo}</Image>
+                <Text style={styles.text}>{info.data.postDecription}</Text>
                 <View style={styles.button}>
                     <Text>{this.state.quantityLikes}</Text>
                     {

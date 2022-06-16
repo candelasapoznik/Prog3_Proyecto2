@@ -53,7 +53,6 @@ componentDidMount(){
             referenciaDelStorage.getDownloadURL()
             .then( url => {
                 console.log(url)
-                this.setState({urlFoto:''})
                 this.props.cuandoSubaLaFoto(url);
             })
         })

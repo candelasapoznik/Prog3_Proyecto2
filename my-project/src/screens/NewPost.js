@@ -22,7 +22,7 @@ class NewPost extends Component {
       likes: [], //Para lograr controlar los Likes
       comments: [], //Para lograr almacenar los comentarios
     })
-    .then()
+    .then(() => {this.props.navigation.navigate('Home')})
     .catch(e => console.log(e))
   }
   cuandoSubaLaFoto(url){
