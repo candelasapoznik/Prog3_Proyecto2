@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {View, Flatlist, StyleSheet, Image } from 'react-native';
+import {View, FlatList, StyleSheet, Image } from 'react-native';
 //importo db y auth de firebase
 import {auth, db} from '../firebase/config' 
 import Loader from '../components/Loader';
-
+import Post from '../components/Post';
 
 class Home extends Component {
     constructor(){
         super()
         this.state = {
-            data: [],
-            loading: true
+            posteos: [],
+            loading: true,
         }
     }
     componentDidMount(){
@@ -37,11 +37,11 @@ class Home extends Component {
             {
                 this.state.loading ?
                 <Loader/> :
-                <View>
-                    <FlatList
-                        data={this.state.data}
+                <View style= {styles.container}>
+                    <FlatList style= {styles.FlatList}
+                        data={this.state.posteos}
                         keyExtractor={(item)=> item.id.toString()}
-                        renderItem={({item}) => <Posts info={item}/>}
+                        renderItem={({item}) => <Post info={item}/>}
                     
                     />
                 </View>
@@ -53,6 +53,14 @@ class Home extends Component {
 };
 
 const styles = StyleSheet.create({
+        container:{
+            flex:1,
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        Flatlist:{
+            flex:1
+        }
     
 })
 

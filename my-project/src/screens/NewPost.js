@@ -17,7 +17,7 @@ class NewPost extends Component {
     db.collection("posts").add({
       email:auth.currentUser.email,
       createdAt: Date.now(),
-      postDecription: this.state.caption,
+      postDescription: this.state.caption,
       photo: this.state.photo,
       likes: [], //Para lograr controlar los Likes
       comments: [], //Para lograr almacenar los comentarios

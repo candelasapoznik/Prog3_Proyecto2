@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import { auth, db } from '../firebase/config'
@@ -54,9 +54,11 @@ class Post extends Component {
 
     render() {
         const { style, info } = this.props
+        console.log(this.props.info)
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>{info.data.description}</Text>
+                <Image style={styles.image} source={{uri: info.data.photo}}/>
+                <Text style={styles.text}>{info.data.postDescription}</Text>
                 <View style={styles.button}>
                     <Text>{this.state.quantityLikes}</Text>
                     {
@@ -83,6 +85,10 @@ const styles = StyleSheet.create({
     container:{
         marginTop: 20,
         marginHorizontal:10
+    },
+    image: {
+        height: 100,
+        width: 100
     },
     likes: {
         flexDirection:'row'

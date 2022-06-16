@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {View, Text, TouchableOpacity, StyleSheet, Image, TextInput} from 'react-native'
 import {Camera} from 'expo-camera'
 import { storage } from '../firebase/config'
+
 class MyCamera extends Component {
 
     constructor(props){
@@ -12,7 +13,7 @@ class MyCamera extends Component {
             showCamera: true,
             urlFoto: ''
         }
-        
+    this.metodosDeCamara = undefined
     }
 
 componentDidMount(){
