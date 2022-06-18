@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList} from 'react-native'
 import React, { Component } from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import { auth, db } from '../firebase/config'
@@ -11,7 +11,7 @@ class Post extends Component {
             quantityLikes: 0,
             like: false,
             arrayLikes: [],
-            arrayComments: [],
+            comentario: [],
         }
     }
     componentDidMount(){
@@ -50,6 +50,21 @@ class Post extends Component {
           like: false,
           quantityLikes: this.state.quantityLikes - 1
         })
+    }
+    comment(){
+        let thisDoc = db.collection('posts').doc(this.props.doc.id); 
+
+        thisDoc.update(
+            {comments: firebase.firestore.FieldValue.arrayUnion({
+                owner: auth.currentUser.displayName,
+                comentario:this.state.comentario
+            })}
+        )
+        .then(
+            this.setState({
+               comentario: ''
+            })
+        ).catch(e => console.log(e))
     }
 
     render() {
