@@ -3,7 +3,8 @@ import {View, FlatList, StyleSheet, Image } from 'react-native';
 //importo db y auth de firebase
 import {auth, db} from '../firebase/config' 
 import Loader from '../components/Loader';
-import Post from '../components/Post';
+import UserPostSearcher from './UserPostSearcher'
+import Post from '../components/Posts';
 
 class Home extends Component {
     constructor(){
@@ -38,7 +39,8 @@ class Home extends Component {
                 this.state.loading ?
                 <Loader/> :
                 <View style= {styles.container}>
-                    <FlatList style= {styles.FlatList}
+                    <UserPostSearcher/>
+                    <FlatList
                         data={this.state.posteos}
                         keyExtractor={(item)=> item.id.toString()}
                         renderItem={({item}) => <Post info={item}/>}
@@ -56,12 +58,22 @@ const styles = StyleSheet.create({
         container:{
             flex:1,
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            alignItems: 'center',
+            borderWidth:1,
+            borderRadius:5,
+            backgroundColor:'#CCAC93',
+            paddingVertical:16,
+            paddingHorizontal:8,
+            marginHorizontal:'auto',
         },
         Flatlist:{
             flex:1
-        }
-    
+        },
+        image: {
+            height: 400,
+            
+        },   
 })
 
 export default Home;

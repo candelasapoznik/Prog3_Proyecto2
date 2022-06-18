@@ -83,6 +83,13 @@ class Post extends Component {
 
 const styles = StyleSheet.create({
     container:{
+        flex:1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical:8,
+        paddingHorizontal:6,
+        borderRadius:5,
+        backgroundColor:'#F5E6E8',
         marginTop: 20,
         marginHorizontal:10
     },
@@ -91,7 +98,8 @@ const styles = StyleSheet.create({
         width: 100
     },
     likes: {
-        flexDirection:'row'
+        flexDirection:'row',
+        alignItems: 'center'
     },
     like:{
         marginRight:8
@@ -111,7 +119,7 @@ const styles = StyleSheet.create({
     comment:{
         padding: 10,
         backgroundColor: '#dc3545',
-        marginTop: 30,
+        margin: 20,
         borderRadius: 4,
     },
     touchableText:{

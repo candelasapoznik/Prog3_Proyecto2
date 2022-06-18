@@ -24,6 +24,7 @@ export default function Tabnavigation(props) {
             logout: () => logout()
         }}
         />
+        
     <Tab.Screen
      name='NewPost'
      component={NewPost}
