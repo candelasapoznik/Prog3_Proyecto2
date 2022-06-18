@@ -97,8 +97,8 @@ class Post extends Component {
                 <Text style={styles.comment}>Comentarios: {this.props.info.data.comments.length}</Text>
                 <FlatList 
                                 data={this.props.info.data.comments}
-                                keyExtractor = {(comment, idx)=> idx.toString() }
-                                renderItem= {({item})=> <Text>{item.owner}: {item.comentario}</Text> } 
+                                keyExtractor = {(item)=> item.id.toString() }
+                                renderItem= {({item})=> <Comments info={item}/> } 
                 />
             </View>
         )
