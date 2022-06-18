@@ -3,7 +3,8 @@ import React from 'react';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import NewPost from '../screens/NewPost';
-import {FontAwesome} from '@expo/vector-icons'
+import UserPostSearcher from '../screens/UserPostSearcher'
+import {FontAwesome,AntDesign} from '@expo/vector-icons'
 const Tab = createBottomTabNavigator();
 
 export default function Tabnavigation(props) {
@@ -31,6 +32,11 @@ export default function Tabnavigation(props) {
      options={{ tabBarIcon: ()=> <FontAwesome name="plus" size={24} color="black" />}}
 
     //  initialParams={} 
+    />
+    <Tab.Screen 
+      name='UserPostSearcher' 
+      component={UserPostSearcher} 
+      options={{ tabBarIcon: ()=> <AntDesign name="search1" size={24} color="black" />}}
     />
     </Tab.Navigator>
     )}
