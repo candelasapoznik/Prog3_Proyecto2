@@ -28,15 +28,15 @@ class UserPostSearcher extends Component {
     }
   render() {
     return (
-        <View>
+        <View style={styles.flatList}>
             <View style={styles.container}>
-            <TextInput style={styles.results}
-                    keyboardtype= 'email-address' 
-                    placeholder='Buscar usuario' 
-                    onChangeText={text=> this.setState({valorFormulario: text})}/>
-                <TouchableOpacity style={styles.button} onPress={() => this.onSubmit()}>
-                    <Text style={styles.touchableText}>Enviar</Text>
-                </TouchableOpacity>
+                    <TextInput style={styles.results}
+                        keyboardtype= 'email-address' 
+                        placeholder='Buscar usuario' 
+                        onChangeText={text=> this.setState({valorFormulario: text})}/>
+                    <TouchableOpacity style={styles.button} onPress={() => this.onSubmit()}>
+                        <Text style={styles.touchableText}>Enviar</Text>
+                    </TouchableOpacity>
             </View>
             {
 
@@ -63,6 +63,7 @@ class UserPostSearcher extends Component {
 }
 const styles = StyleSheet.create({
     container:{
+        flex: 1,
         marginTop: 20,
         marginHorizontal:10,
         backgroundColor:'black',
@@ -90,8 +91,8 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     flatList:{
+        flex: 1,
         margin: 20,
-        flex: 1
     }
 });
 
