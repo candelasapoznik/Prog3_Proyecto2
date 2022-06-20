@@ -8,9 +8,6 @@ class Profile extends Component {
     constructor(props) {
       super(props)
       this.state = {
-          name: '',
-          email: '',
-          lastSignInTime: '',
           posts: [],
           loading: true
       }
@@ -55,13 +52,13 @@ class Profile extends Component {
             {
                 this.state.loading ?
                 <Loader/> :
-                <View>
+                <View style={styles.container}>
                     <Text style={styles.tittle}>My profile</Text>
-                    <Text style={styles.subtittle}> Welcome: {this.state.name}</Text>
+                    <Text style={styles.subtittle}> Welcome: {auth.currentUser.userName}</Text>
                     <Text style={styles.text}> Email: {auth.currentUser.email}</Text>
                     <Text style={styles.element}> Last sign in Time: {auth.currentUser.metadata.lastSignInTime}</Text>
                     <Text style={styles.subtittle}>Posts:</Text>
-                    <FlatList
+                    <FlatList style={styles.flatList}
                         data={this.state.posts}
                         keyExtractor={(item)=> item.id.toString()}
                         renderItem={({item}) => <Posts info={item} navigation={this.props.route.params.navigation}/>}
@@ -78,30 +75,37 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        marginTop: 20,
-        marginHorizontal:10
+        flex:1,
+        backgroundColor:'black',
+    
     },
     tittle:{
         fontSize:25,
         marginTop:20,
         marginBottom:30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center'
     },
     subtittle:{
         fontSize:18,
         marginTop:20,
         marginBottom:30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white'
+
     },
     text:{
         fontSize:15,
         marginBottom:10,
+        color: 'white'
     },
     button:{
         padding: 10,
         backgroundColor: '#dc3545',
         marginTop: 30,
         borderRadius: 4,
+        color: 'white'
     },
     touchableText:{
         fontWeight: 'bold',
@@ -111,6 +115,10 @@ const styles = StyleSheet.create({
     posts:{
         backgroundColor: '#fffff',
         fontSize:15,
+    },
+    flatList:{
+        flex:1,
+        margin: 40,
     }
     
 });

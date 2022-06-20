@@ -82,4 +82,4 @@ const styles= StyleSheet.create({
     }
 })
 
-export default Register
+export default Register;

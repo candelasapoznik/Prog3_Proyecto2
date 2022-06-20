@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TextInput, TouchableOpacity, Text, FlatList } from 'react-native'
+import { View, TextInput, TouchableOpacity, Text, FlatList, StyleSheet } from 'react-native'
 import { db } from '../Firebase/config'
 import Post from '../components/Posts'
 
@@ -29,13 +29,13 @@ class UserPostSearcher extends Component {
   render() {
     return (
         <View>
-            <View>
-            <TextInput 
+            <View style={styles.container}>
+            <TextInput style={styles.results}
                     keyboardtype= 'email-address' 
                     placeholder='Buscar usuario' 
                     onChangeText={text=> this.setState({valorFormulario: text})}/>
-                <TouchableOpacity onPress={() => this.onSubmit()}>
-                    <Text>Enviar</Text>
+                <TouchableOpacity style={styles.button} onPress={() => this.onSubmit()}>
+                    <Text style={styles.touchableText}>Enviar</Text>
                 </TouchableOpacity>
             </View>
             {
@@ -43,12 +43,12 @@ class UserPostSearcher extends Component {
             this.state.firstRender ?
             <> </> :
         
-            <View>
+            <View style={styles.container}>
             { 
                 this.state.postEncontrados.length === 0 ?
-                <Text>El usuario no existe o aún no tiene publicaciones</Text>
+                <Text style={styles.text}>El usuario no existe o aún no tiene publicaciones</Text>
                 :
-                <FlatList 
+                <FlatList style={styles.flatList}
                     data={ this.state.postEncontrados }
                     renderItem={({item}) => <Post info={item}/>}
                     keyExtractor={ item => item.id.toString()}
@@ -59,6 +59,41 @@ class UserPostSearcher extends Component {
         </View>
     )
   }
+
 }
+const styles = StyleSheet.create({
+    container:{
+        marginTop: 20,
+        marginHorizontal:10,
+        backgroundColor:'black',
+        margin: 40
+    },
+    button:{
+        padding: 10,
+        borderRadius: 4,
+        backgroundColor: '#dc3545',
+        margin: 20,
+    },
+    results:{
+        padding: 10,
+        backgroundColor: 'white',
+        marginTop: 30,
+        margin: 20,
+        borderRadius: 4,
+    },
+    text:{
+        color:'white'
+    },
+    touchableText:{
+        fontWeight: 'bold',
+        color:'#fff',
+        textAlign: 'center'
+    },
+    flatList:{
+        margin: 20,
+        flex: 1
+    }
+});
+
 
 export default UserPostSearcher;

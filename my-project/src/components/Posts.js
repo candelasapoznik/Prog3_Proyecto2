@@ -115,11 +115,11 @@ const styles = StyleSheet.create({
         height: 100,
         width: 100
     },
-    likes: {
-        flexDirection:'row'
-    },
     like:{
-        marginRight:8
+        marginLeft:8,
+        padding:10,
+        width: 100
+
     },
     unlike:{
         marginRight:8
@@ -134,9 +134,11 @@ const styles = StyleSheet.create({
         marginVertical:10
     },
     button:{
-        padding: 10,
+        alignItems: 'center',
+        padding: 7,
         marginTop: 30,
         borderRadius: 4,
+        flexDirection:'row'
     },
     comment:{
         padding: 10,
