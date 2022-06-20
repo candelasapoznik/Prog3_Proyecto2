@@ -32,21 +32,22 @@ class Profile extends Component {
                 })
             }
         )
-        db.collection('users').where('email','==', auth.currentUser.email).onSnapshot(
-            docs => {
-                let user = {}
-                docs.forEach( doc => {
-                user={
-                    id: doc.id,
-                    data: doc.data()
-                }
-            })
-                this.setState({
-                    name: user.data.userName
-                })
-            }
-        )
     }
+
+    // deletePost(){
+    //     db.collection('posts').where('owner','==',auth.currentUser.email)
+    //     .onSnapshot(
+    //         docs => {
+    //           docs.forEach( doc => {
+    //             doc.ref.delete()
+    //           })
+    //           this.setState({
+    //               display:false,
+    //           })
+    //         }
+    //       ) 
+    
+    // }
 
   render() {
     return(

@@ -41,6 +41,7 @@ class Home extends Component {
                 <View style= {styles.container}>
                     <UserPostSearcher/>
                     <FlatList
+                        Style={styles.Flatlist}
                         data={this.state.posteos}
                         keyExtractor={(item)=> item.id.toString()}
                         renderItem={({item}) => <Post info={item}/>}
@@ -68,12 +69,9 @@ const styles = StyleSheet.create({
             marginHorizontal:'auto',
         },
         Flatlist:{
-            flex:1
-        },
-        image: {
-            height: 400,
-            
-        },   
+            flex:1,
+            overflowY:'scroll'
+        } 
 })
 
 export default Home;
