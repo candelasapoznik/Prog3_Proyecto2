@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View, FlatList, StyleSheet, Image } from 'react-native';
 //importo db y auth de firebase
-import {db} from '../firebase/config' 
+import {db} from '../Firebase/config' 
 import Loader from '../components/Loader';
 import UserPostSearcher from './UserPostSearcher'
 import Post from '../components/Posts';

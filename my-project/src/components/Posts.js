@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList} from 'react-native'
 import React, { Component } from 'react'
 import { FontAwesome } from '@expo/vector-icons'
-import { auth, db } from '../firebase/config'
+import { auth, db } from '../Firebase/config'
 import firebase from 'firebase'
 import Comments from '../screens/Comments'
 

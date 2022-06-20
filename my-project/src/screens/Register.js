@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {StyleSheet,View,TextInput,TouchableOpacity, Text} from 'react-native'
-import {auth} from '../firebase/config'
+
 
 
 class Register extends Component {

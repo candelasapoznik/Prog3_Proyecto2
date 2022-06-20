@@ -5,6 +5,7 @@ import Profile from '../screens/Profile';
 import NewPost from '../screens/NewPost';
 import UserPostSearcher from '../screens/UserPostSearcher'
 import {FontAwesome,AntDesign} from '@expo/vector-icons'
+
 const Tab = createBottomTabNavigator();
 
 export default function Tabnavigation(props) {

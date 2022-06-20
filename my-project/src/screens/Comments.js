@@ -1,6 +1,6 @@
 import { View, Text, FlatList, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
-import { db, auth } from '../firebase/config'
+import { db, auth } from '../Firebase/config'
 import firebase from 'firebase'
 
  class Comments extends Component {
