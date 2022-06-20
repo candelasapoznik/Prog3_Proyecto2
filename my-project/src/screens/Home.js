@@ -39,12 +39,11 @@ class Home extends Component {
                 this.state.loading ?
                 <Loader/> :
                 <View style= {styles.container}>
-                    <UserPostSearcher/>
                     <FlatList
                         Style={styles.Flatlist}
                         data={this.state.posteos}
                         keyExtractor={(item)=> item.id.toString()}
-                        renderItem={({item}) => <Post info={item}/>}
+                        renderItem={({item}) => <Post info={item} navigation={this.props.navigation}/>}
                     
                     />
                 </View>

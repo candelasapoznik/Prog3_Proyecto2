@@ -83,7 +83,7 @@ class StackNav extends Component {
                         }
                     />
                     <Stack.Screen
-                        name='Comment'
+                        name='Comments'
                         component={Comment}
                         initialParams={{
                             newComment: (comment)=> this.Comment(comment)                                    

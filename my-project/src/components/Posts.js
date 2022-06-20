@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import { auth, db } from '../Firebase/config'
 import firebase from 'firebase'
-import Comments from '../screens/Comments'
+
 
 class Post extends Component {
     constructor(props) {
@@ -94,12 +94,6 @@ class Post extends Component {
                 <TouchableOpacity style={styles.comment} onPress={()=> this.props.navigation.navigate('Comments',{id: this.props.info.id})}>
                     <Text style={styles.touchableText}>Comentar</Text>
                 </TouchableOpacity>
-                <Text style={styles.comment}>Comentarios: {this.props.info.data.comments.length}</Text>
-                <FlatList 
-                                data={this.props.info.data.comments}
-                                keyExtractor = {(item)=> item.id.toString() }
-                                renderItem= {({item})=> <Comments info={item}/> } 
-                />
             </View>
         )
     }

@@ -23,18 +23,14 @@ import firebase from 'firebase'
 
         )
     }
-    onSubmit(comentario) {
+    onSubmit() {
         const comment = {
             owner: auth.currentUser.email,
             createdAt: Date.now(),
-            description: comentario
-        }
-        if (text.length === 0) {
-            this.setState({ error: 'el comentario no puede estar vacio' })
-            return false
+            description: this.state.newComment
         }
         db.collection('posts').doc(this.props.route.params.id).update({
-            comments: firebase.firestore.FieldValue.arrayUnion(comments)
+            comments: firebase.firestore.FieldValue.arrayUnion(comment)
         })
             .then(() => this.setState({ newComment: '' }))
             .catch((error) => console.log(error))
@@ -45,7 +41,7 @@ import firebase from 'firebase'
                 <FlatList
                     data={this.state.comments}
                     keyExtractor={(item) => item.createdAt.toString()}
-                    renderItem={({ item }) => <Text>{item.description}</Text>}
+                    renderItem={({ item }) => <Text>{item.owner}: {item.description}</Text>}
 
                 />
                 <View style={styles.container}>

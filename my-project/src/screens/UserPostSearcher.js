@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, TextInput, TouchableOpacity, Text, FlatList } from 'react-native'
 import { db } from '../Firebase/config'
-
+import Post from '../components/Posts'
 
 class UserPostSearcher extends Component {
     constructor(props){
@@ -12,8 +12,9 @@ class UserPostSearcher extends Component {
             firstRender: true
         }
     }
-    onSubmit(datoFormulario){
-        db.collection('posts').where('owner', '==', datoFormulario).onSnapshot(
+    onSubmit(){
+        console.log(this.state.valorFormulario)
+        db.collection('posts').where('email', '==', this.state.valorFormulario).onSnapshot(
             (docs)=>{
                 let arrayDocs=[]
                 docs.forEach((doc) => {
@@ -29,23 +30,23 @@ class UserPostSearcher extends Component {
     return (
         <View>
             <View>
-                <TextInput 
-                keyboardType='email-adress'
-                placeholder='Escribe aquí el usuario'
-                onChangeText={ text => this.setState({valorFomulario:text})} />
-                <TouchableOpacity onPress={() => this.onSubmit(this.state.valorFormulario)}>
+            <TextInput 
+                    keyboardtype= 'email-address' 
+                    placeholder='Buscar post' 
+                    onChangeText={text=> this.setState({valorFormulario: text})}/>
+                <TouchableOpacity onPress={() => this.onSubmit()}>
                     <Text>Enviar</Text>
                 </TouchableOpacity>
             </View>
             {
 
-            this.firstRender ?
+            this.state.firstRender ?
             <> </> :
         
             <View>
             { 
-                this.postEncontrados.lenght == 0 ?
-                'El usuario no existe o aún no tiene publicaciones'
+                this.state.postEncontrados.length === 0 ?
+                <Text>El usuario no existe o aún no tiene publicaciones</Text>
                 :
                 <FlatList 
                     data={ this.state.postEncontrados }

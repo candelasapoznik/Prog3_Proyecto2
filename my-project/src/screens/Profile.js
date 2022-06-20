@@ -17,7 +17,7 @@ class Profile extends Component {
     }
 
     componentDidMount(){
-        db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(
+        db.collection('posts').where('email', '==', auth.currentUser.email).onSnapshot(
             docs =>{
                 let posts = [];
                 docs.forEach( doc => {
@@ -62,9 +62,9 @@ class Profile extends Component {
                     <Text style={styles.element}> Last sign in Time: {auth.currentUser.metadata.lastSignInTime}</Text>
                     <Text style={styles.subtittle}>Posts:</Text>
                     <FlatList
-                        data={this.state.data}
+                        data={this.state.posts}
                         keyExtractor={(item)=> item.id.toString()}
-                        renderItem={({item}) => <Posts style={styles.posts} info={item} navigation={this.props.route.params.navigation.posts}/>}
+                        renderItem={({item}) => <Posts info={item} navigation={this.props.route.params.navigation}/>}
                     />
                     <TouchableOpacity style={styles.touchable} onPress={()=>this.props.route.params.logout()}>
                         <Text style={styles.touchableText}>Logout</Text>
