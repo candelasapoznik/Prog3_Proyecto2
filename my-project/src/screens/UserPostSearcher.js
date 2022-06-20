@@ -32,7 +32,7 @@ class UserPostSearcher extends Component {
             <View>
             <TextInput 
                     keyboardtype= 'email-address' 
-                    placeholder='Buscar post' 
+                    placeholder='Buscar usuario' 
                     onChangeText={text=> this.setState({valorFormulario: text})}/>
                 <TouchableOpacity onPress={() => this.onSubmit()}>
                     <Text>Enviar</Text>

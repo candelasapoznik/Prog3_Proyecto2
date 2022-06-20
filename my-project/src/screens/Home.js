@@ -62,10 +62,10 @@ const styles = StyleSheet.create({
             alignItems: 'center',
             borderWidth:1,
             borderRadius:5,
-            backgroundColor:'#CCAC93',
+            backgroundColor:'black',
             paddingVertical:16,
             paddingHorizontal:8,
-            marginHorizontal:'auto',
+            
         },
         Flatlist:{
             flex:1,

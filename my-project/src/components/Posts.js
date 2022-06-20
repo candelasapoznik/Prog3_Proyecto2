@@ -75,8 +75,8 @@ class Post extends Component {
             <View style={styles.container}>
                 <Text style={styles.text}>Usuario: {info.data.email}</Text>
                 <Image style={styles.image} source={{uri: info.data.photo}}/>
-                <Text style={styles.text}>{info.data.postDescription}</Text>
-                <Text style={styles.text}>{info.data.createdAt}</Text>
+                <Text style={styles.description}>{info.data.postDescription}</Text>
+                <Text style={styles.date}>{info.data.createdAt}</Text>
                 <View style={styles.button}>
                     <Text>{this.state.quantityLikes}</Text>
                     {
@@ -102,22 +102,21 @@ class Post extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
         paddingVertical:8,
         paddingHorizontal:6,
         borderRadius:5,
-        backgroundColor:'#F5E6E8',
+        backgroundColor:'white',
         marginTop: 20,
-        marginHorizontal:10
+        alignItems: 'center'
+    
     },
     image: {
         height: 100,
         width: 100
     },
     likes: {
-        flexDirection:'row',
-        alignItems: 'center'
+        flexDirection:'row'
     },
     like:{
         marginRight:8
@@ -127,7 +126,12 @@ const styles = StyleSheet.create({
     },
     text:{
         fontSize:15,
-        marginBottom:10,
+        marginVertical:10,
+        fontWeight: 'bold'
+    },
+    description:{
+        fontSize: 20,
+        marginVertical:10
     },
     button:{
         padding: 10,

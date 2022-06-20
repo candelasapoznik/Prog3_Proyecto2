@@ -35,7 +35,7 @@ export default function Tabnavigation(props) {
     //  initialParams={} 
     />
     <Tab.Screen 
-      name='UserPostSearcher' 
+      name='Searcher' 
       component={UserPostSearcher} 
       options={{ tabBarIcon: ()=> <AntDesign name="search1" size={24} color="black" />}}
     />
