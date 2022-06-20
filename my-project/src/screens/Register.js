@@ -19,7 +19,6 @@ render(){
     return(
         <View style={styles.container}>
                 <Text style={styles.title}> Register </Text>
-
                 <TextInput style={styles.imput}
                     keyboardtype= 'email-address' 
                     placeholder='email'
@@ -48,9 +47,9 @@ render(){
 }
 const styles= StyleSheet.create({
     container:{
+        flex:1,
         display:'flex',
         flexDirection:'column',
-        flex:1,
         alignItems: 'center',
         borderWidth:1,
         backgroundColor:'black',
@@ -68,7 +67,8 @@ const styles= StyleSheet.create({
         backgroundColor: 'white',
         marginTop: 30,
         margin: 20,
-        borderRadius: 4
+        borderRadius: 4,
+        color: 'white'
     },
     button:{
         padding: 10,

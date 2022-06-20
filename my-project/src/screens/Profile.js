@@ -31,32 +31,18 @@ class Profile extends Component {
         )
     }
 
-    // deletePost(){
-    //     db.collection('posts').where('owner','==',auth.currentUser.email)
-    //     .onSnapshot(
-    //         docs => {
-    //           docs.forEach( doc => {
-    //             doc.ref.delete()
-    //           })
-    //           this.setState({
-    //               display:false,
-    //           })
-    //         }
-    //       ) 
-    
-    // }
 
   render() {
     return(
-        <View>
+        <View style={styles.container}>
             {
                 this.state.loading ?
                 <Loader/> :
                 <View style={styles.container}>
                     <Text style={styles.tittle}>My profile</Text>
-                    <Text style={styles.subtittle}> Welcome: {auth.currentUser.userName}</Text>
+                    <Text style={styles.subtittle}> Welcome: {auth.currentUser.email}</Text>
                     <Text style={styles.text}> Email: {auth.currentUser.email}</Text>
-                    <Text style={styles.element}> Last sign in Time: {auth.currentUser.metadata.lastSignInTime}</Text>
+                    <Text style={styles.text}> Last sign in Time: {auth.currentUser.metadata.lastSignInTime}</Text>
                     <Text style={styles.subtittle}>Posts:</Text>
                     <FlatList style={styles.flatList}
                         data={this.state.posts}
@@ -77,7 +63,6 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'black',
-    
     },
     tittle:{
         fontSize:25,
@@ -97,13 +82,13 @@ const styles = StyleSheet.create({
     },
     text:{
         fontSize:15,
-        marginBottom:10,
-        color: 'white'
+        color: 'white',
+        margin: 10
     },
     button:{
         padding: 10,
         backgroundColor: '#dc3545',
-        marginTop: 30,
+        margin: 30,
         borderRadius: 4,
         color: 'white'
     },
@@ -112,15 +97,9 @@ const styles = StyleSheet.create({
         color:'#fff',
         textAlign: 'center'
     },
-    posts:{
-        backgroundColor: '#fffff',
-        fontSize:15,
-    },
-    flatList:{
-        flex:1,
-        margin: 40,
+    flatList: {
+        flex: 1
     }
-    
-});
+})
 
 export default Profile
