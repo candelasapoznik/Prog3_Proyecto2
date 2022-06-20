@@ -18,6 +18,8 @@ class Register extends Component {
 render(){
     return(
         <View style={styles.container}>
+                <Text style={styles.title}> Register </Text>
+
                 <TextInput style={styles.imput}
                     keyboardtype= 'email-address' 
                     placeholder='email'
@@ -48,34 +50,36 @@ const styles= StyleSheet.create({
     container:{
         display:'flex',
         flexDirection:'column',
-        padding:'3rem',
-        minHeight:'100vh',
-        marginBottom:20,
+        flex:1,
+        alignItems: 'center',
+        borderWidth:1,
+        backgroundColor:'black',
+    },
+    title:{
+        fontSize:25,
+        marginTop:20,
+        marginBottom:30,
+        fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center'
     },
     imput: {
-        height:20,
-        padding:'1.4rem',
-        borderWidth:1,
-        borderColor: '#ccc',
-        borderStyle: 'solid',
-        borderRadius: 6,
-        marginVertical:10,
+        padding: 10,
+        backgroundColor: 'white',
+        marginTop: 30,
+        margin: 20,
+        borderRadius: 4
     },
     button:{
-        backgroundColor:'#2b1e49',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
-        textAlign: 'center',
-        marginTop:'2rem',
-        marginBottom:'1.4rem',
-        borderRadius:4, 
-        fontSize:'1rem',
-        boxShadow:'0px 6px 16px 0px rgba(0,0,0,0.37);',
-        borderBottomWidth: 1,        
-        borderStyle: 'solid',
+        padding: 10,
+        borderRadius: 4,
+        backgroundColor: '#dc3545',
+        margin: 20
     }, 
     textButton:{
-        color: '#fff'
+        fontWeight: 'bold',
+        color:'#fff',
+        textAlign: 'center'
     },
     error: {
         color:'red'

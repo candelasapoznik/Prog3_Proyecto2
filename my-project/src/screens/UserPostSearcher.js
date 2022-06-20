@@ -72,14 +72,14 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 4,
         backgroundColor: '#dc3545',
-        margin: 20,
+        margin: 20
     },
     results:{
         padding: 10,
         backgroundColor: 'white',
         marginTop: 30,
         margin: 20,
-        borderRadius: 4,
+        borderRadius: 4
     },
     text:{
         color:'white'

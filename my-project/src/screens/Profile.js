@@ -63,7 +63,7 @@ class Profile extends Component {
                         keyExtractor={(item)=> item.id.toString()}
                         renderItem={({item}) => <Posts info={item} navigation={this.props.route.params.navigation}/>}
                     />
-                    <TouchableOpacity style={styles.touchable} onPress={()=>this.props.route.params.logout()}>
+                    <TouchableOpacity style={styles.button} onPress={()=>this.props.route.params.logout()}>
                         <Text style={styles.touchableText}>Logout</Text>
                     </TouchableOpacity>         
                 </View>

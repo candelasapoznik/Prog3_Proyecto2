@@ -119,7 +119,6 @@ const styles = StyleSheet.create({
         marginLeft:8,
         padding:10,
         width: 100
-
     },
     unlike:{
         marginRight:8
