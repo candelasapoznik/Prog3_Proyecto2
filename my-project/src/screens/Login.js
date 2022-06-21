@@ -32,7 +32,7 @@ render(){
                 <Text style={styles.textButton}>Loguearme</Text>
             </TouchableOpacity>   
             <TouchableOpacity style={styles.buttonText} onPress={()=> this.props.navigation.navigate('Register')}>
-            <Text> ¿No tienes una cuenta? Registrate </Text>
+            <Text style={styles.text}> ¿No tienes una cuenta? Registrate </Text>
             </TouchableOpacity>    
         </View>
         )
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         margin: 20,
         borderRadius: 4,
-        color: 'white'
+        color: 'black'
     },
     buttonText: {
         color: 'white'
@@ -77,7 +77,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color:'#fff',
         textAlign: 'center'
-    }    
+    },
+    text:{
+        color: 'white',
+        fontSize:15,
+    }  
 
 })
 

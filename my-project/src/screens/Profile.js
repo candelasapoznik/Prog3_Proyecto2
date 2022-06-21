@@ -37,18 +37,21 @@ class Profile extends Component {
         <View style={styles.container}>
             {
                 this.state.loading ?
-                <Loader/> :
+                <Loader/> 
+                :
                 <View style={styles.container}>
                     <Text style={styles.tittle}>My profile</Text>
                     <Text style={styles.subtittle}> Welcome: {auth.currentUser.email}</Text>
                     <Text style={styles.text}> Email: {auth.currentUser.email}</Text>
                     <Text style={styles.text}> Last sign in Time: {auth.currentUser.metadata.lastSignInTime}</Text>
                     <Text style={styles.subtittle}>Posts:</Text>
+                    <View style={styles.container}>
                     <FlatList style={styles.flatList}
                         data={this.state.posts}
                         keyExtractor={(item)=> item.id.toString()}
-                        renderItem={({item}) => <Posts info={item} navigation={this.props.route.params.navigation}/>}
+                        renderItem={({item}) => <Posts borrar={true} info={item} navigation={this.props.route.params.navigation}/>}
                     />
+                    </View>
                     <TouchableOpacity style={styles.button} onPress={()=>this.props.route.params.logout()}>
                         <Text style={styles.touchableText}>Logout</Text>
                     </TouchableOpacity>         
@@ -62,7 +65,9 @@ class Profile extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'black',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor:'black'
     },
     tittle:{
         fontSize:25,
@@ -75,7 +80,7 @@ const styles = StyleSheet.create({
     subtittle:{
         fontSize:18,
         marginTop:20,
-        marginBottom:30,
+        marginBottom:5,
         fontWeight: 'bold',
         color: 'white'
 
@@ -88,7 +93,7 @@ const styles = StyleSheet.create({
     button:{
         padding: 10,
         backgroundColor: '#dc3545',
-        margin: 30,
+        margin: 10,
         borderRadius: 4,
         color: 'white'
     },
@@ -97,8 +102,9 @@ const styles = StyleSheet.create({
         color:'#fff',
         textAlign: 'center'
     },
-    flatList: {
-        flex: 1
+    flatList:{
+        flex: 1,
+        marginHorizontal: 20
     }
 })
 
