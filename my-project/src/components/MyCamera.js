@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text, TouchableOpacity, StyleSheet, Image, TextInput} from 'react-native'
+import {View, Text, TouchableOpacity, StyleSheet, Image,} from 'react-native'
 import {Camera} from 'expo-camera'
 import { storage } from '../Firebase/config'
 
@@ -21,7 +21,6 @@ componentDidMount(){
       .then(()=>{
            this.setState({
             permission: true,
-            urlFoto:''
            })
       })
       .catch( e => console.log(e))          
@@ -31,7 +30,7 @@ componentDidMount(){
       this.metodosDeCamara.takePictureAsync()
       .then(photo=>{
         this.setState({
-            urlFoto: photo.uri,
+            urlFoto: photo.uri, //ruta interna
             showCamera:false
     })
 })
@@ -41,17 +40,14 @@ componentDidMount(){
   SavePhoto(){
     fetch(this.state.urlFoto)
     .then(response => {
-        // console.log(response)    
-        return response.blob()
+
+        return response.blob() //toma archivos binarios y le devuelve el formato, para ser legible en JS.
     })
     .then(foto => {
-        // console.log(foto)
-        const referenciaDelStorage = storage.ref(`photos/${Date.now()}.jpg`)
-        // console.log(referenciaDelStorage)
-
-        referenciaDelStorage.put(foto)
+        const referenciaDelStorage = storage.ref(`photos/${Date.now()}.jpg`) //seteo la direc
+        referenciaDelStorage.put(foto)//enviamos la foto a fb
         .then(()=>{
-            referenciaDelStorage.getDownloadURL()
+            referenciaDelStorage.getDownloadURL() //descarga la url de la foto en firebase
             .then( url => {
                 console.log(url)
                 this.props.cuandoSubaLaFoto(url);
@@ -76,10 +72,10 @@ componentDidMount(){
             this.state.permission ?
                 this.state.showCamera === false ?
                 <>
-                    <Text>Aqui vamos a renderizar la imagen</Text>
+                    <Text> renderizamos la imagen</Text>
                     <Image
                     style={styles.camera}
-                    source={{uri: this.state.urlFoto}}
+                    source={{uri: this.state.urlFoto}} //url interna de la foto
                     />
                     <View style={styles.container}>
                         <TouchableOpacity onPress={()=> this.SavePhoto()}>
@@ -99,8 +95,8 @@ componentDidMount(){
                 <View style={styles.container}>
                     <Camera
                         style={styles.camera}
-                        type={Camera.Constants.Type.back}
-                        ref={ metodos => this.metodosDeCamara = metodos}
+                        type={Camera.Constants.Type.front} 
+                        ref={ metodos => this.metodosDeCamara = metodos} //definimos los metodos de camera para usar los metodos internos 
                     />
                     <TouchableOpacity style={styles.button} onPress = {()=> this.takePicture()}>
                         <Text>Sacar foto</Text>
