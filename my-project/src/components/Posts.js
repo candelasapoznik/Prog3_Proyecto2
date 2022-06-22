@@ -78,6 +78,8 @@ class Post extends Component {
 
     render() {
         const { style, info } = this.props
+        const timestamp = new Date().getTime();
+        const date = new Date(timestamp);
         console.log(this.props.info)
         return (
             <View style={styles.container}>

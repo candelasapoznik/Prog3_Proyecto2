@@ -17,7 +17,7 @@ class UserPostSearcher extends Component {
         db.collection('posts').where('email', '==', this.state.valorFormulario).onSnapshot(
             (docs)=>{
                 let arrayDocs=[]
-                docs.forEach((doc) => {
+                docs.forEach((doc) => { //foeEach voy a iterar y con el push voy a meter nueva info dentro del arrayDocs
                     arrayDocs.push({
                         id: doc.id,
                         data: doc.data()
@@ -49,9 +49,9 @@ class UserPostSearcher extends Component {
                 <Text style={styles.text}>El usuario no existe o aún no tiene publicaciones</Text>
                 :
                 <FlatList style={styles.flatList}
-                    data={ this.state.postEncontrados }
-                    renderItem={({item}) => <Post info={item}/>}
-                    keyExtractor={ item => item.id.toString()}
+                    data={ this.state.postEncontrados } //
+                    keyExtractor={ item => item.id.toString()} //va a ir posteo por posto y accede a la propiedad id de cada posteo
+                    renderItem={({item}) => <Post info={item}/>} 
                 />
             }
             </View>
@@ -63,7 +63,7 @@ class UserPostSearcher extends Component {
 }
 const styles = StyleSheet.create({
     container:{
-        flex: 1,
+        flex: 1, 
         marginTop: 20,
         marginHorizontal:10,
         backgroundColor:'black',
