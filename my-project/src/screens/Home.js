@@ -34,13 +34,12 @@ class Home extends Component {
     }
   render() {
     return (
-        <View>
+        <View style= {styles.container}>
             {
                 this.state.loading ?
                 <Loader/> :
                 <View style= {styles.container}>
                     <FlatList
-                        Style={styles.Flatlist}
                         data={this.state.posteos}
                         keyExtractor={(item)=> item.id.toString()}
                         renderItem={({item}) => <Post info={item} navigation={this.props.navigation}/>}
@@ -65,12 +64,7 @@ const styles = StyleSheet.create({
             backgroundColor:'black',
             paddingVertical:16,
             paddingHorizontal:8,
-            
-        },
-        Flatlist:{
-            flex:1,
-            overflowY:'scroll'
-        } 
+        }
 })
 
 export default Home;

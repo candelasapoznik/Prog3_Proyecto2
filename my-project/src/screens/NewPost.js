@@ -42,7 +42,7 @@ class NewPost extends Component {
           :
 
           <View style={styles.container}>
-            <Text style={styles.titulo}>¿Qué vas a publicar hoy?</Text>
+            <Text style={styles.title}>¿Qué vas a publicar hoy?</Text>
             <Image source={{ uri: this.state.photo }} style={styles.image} />
               <TextInput 
                   style={styles.field}
@@ -50,8 +50,8 @@ class NewPost extends Component {
                   placeholder='caption'
                   onChangeText={text => this.setState({caption: text})}
               />
-              <TouchableOpacity onPress={ ()=> this.submit() } >
-                  <Text>Agregar posteo</Text>
+              <TouchableOpacity style={styles.button} onPress={ ()=> this.submit() } >
+                  <Text style={styles.textButton}>Agregar posteo</Text>
               </TouchableOpacity>
           </View>
         }
@@ -62,19 +62,38 @@ class NewPost extends Component {
 const styles = StyleSheet.create({
   container:{
       paddingHorizontal:10,
-      marginTop: 10
+      marginTop: 10,
+      backgroundColor: "black",
+      flex: 1
   },
   title:{
-      marginBottom:20
+    fontSize:25,
+    marginTop:20,
+    marginBottom:30,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center'
   },
+  button:{
+    padding: 10,
+    borderRadius: 4,
+    backgroundColor: '#dc3545',
+    margin: 20
+},
   field:{
       borderColor: '#dcdcdc',
       borderWidth: 1,
       borderRadius: 2,
       padding:3,
-      marginBottom:8
+      marginBottom:8,
+      color: 'white'
 
-  }
+  },
+  textButton:{
+    fontWeight: 'bold',
+    color:'#fff',
+    textAlign: 'center'
+}    
 })
 
 export default NewPost;

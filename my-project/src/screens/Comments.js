@@ -38,10 +38,11 @@ import firebase from 'firebase'
     render() {
         return (
             <View style={styles.container}>
+                <Text style={styles.commentsTitulo}>Comentarios: </Text>
                 <FlatList
                     data={this.state.comments}
                     keyExtractor={(item) => item.createdAt.toString()}
-                    renderItem={({ item }) => <Text>{item.owner}: {item.description}</Text>}
+                    renderItem={({ item }) => <Text style={styles.comments}>{item.owner}: {item.description}</Text>}
 
                 />
                 <View style={styles.container}>
@@ -52,7 +53,7 @@ import firebase from 'firebase'
                         onChangeText={(comment) => this.setState({ newComment: comment })}
                     />
                     <TouchableOpacity style={styles.button} onPress={() => this.onSubmit(this.state.newComment)}>
-                        <Text style={styles.touchableText}> COMENTAR </Text>
+                        <Text style={styles.touchableText}> Comentar </Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -63,16 +64,18 @@ import firebase from 'firebase'
 const styles = StyleSheet.create({
     container:{
         marginTop: 20,
-        marginHorizontal:10
+        marginHorizontal:10,
+        backgroundColor:'black',
     },
     button:{
         padding: 10,
-        marginTop: 30,
         borderRadius: 4,
+        backgroundColor: '#dc3545',
+        margin: 20,
     },
     comment:{
         padding: 10,
-        backgroundColor: '#dc3545',
+        backgroundColor: 'white',
         marginTop: 30,
         borderRadius: 4,
     },
@@ -80,6 +83,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color:'#fff',
         textAlign: 'center'
+    },
+    commentsTitulo:{
+        color: 'white',
+        marginLeft: 10,
+        marginTop:5,
+        fontWeight: 'bold'
+    },
+    comments:{
+        color: 'white',
+        marginLeft: 10,
+        marginTop:5
     }
 });
 

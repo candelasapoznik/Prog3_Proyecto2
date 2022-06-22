@@ -13,6 +13,7 @@ class Post extends Component {
             like: false,
             arrayLikes: [],
             comentario: [],
+            borrar: this.props.borrar
         }
     }
     componentDidMount(){
@@ -68,11 +69,24 @@ class Post extends Component {
         ).catch(e => console.log(e))
     }
 
+    delete(){
+        db.collection('posts').doc(this.props.info.id).delete()
+        this.Setstate({
+            borrar: this.props.borrar
+        })
+    }
+
     render() {
         const { style, info } = this.props
         console.log(this.props.info)
         return (
             <View style={styles.container}>
+                {this.state.borrar=== true ? 
+                <TouchableOpacity onPress={() => this.delete()}>
+                <FontAwesome name='trash' size={24} color='red' />
+                </TouchableOpacity>
+                : null
+                }
                 <Text style={styles.text}>Usuario: {info.data.email}</Text>
                 <Image style={styles.image} source={{uri: info.data.photo}}/>
                 <Text style={styles.description}>{info.data.postDescription}</Text>
@@ -102,6 +116,7 @@ class Post extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        display: 'flex',
         flexDirection: 'column',
         paddingVertical:8,
         paddingHorizontal:6,
@@ -115,11 +130,10 @@ const styles = StyleSheet.create({
         height: 100,
         width: 100
     },
-    likes: {
-        flexDirection:'row'
-    },
     like:{
-        marginRight:8
+        marginLeft:8,
+        padding:10,
+        width: 100
     },
     unlike:{
         marginRight:8
@@ -134,9 +148,11 @@ const styles = StyleSheet.create({
         marginVertical:10
     },
     button:{
-        padding: 10,
+        alignItems: 'center',
+        padding: 7,
         marginTop: 30,
         borderRadius: 4,
+        flexDirection:'row'
     },
     comment:{
         padding: 10,

@@ -78,13 +78,13 @@ componentDidMount(){
                     source={{uri: this.state.urlFoto}} //url interna de la foto
                     />
                     <View style={styles.container}>
-                        <TouchableOpacity onPress={()=> this.SavePhoto()}>
-                            <Text>
+                        <TouchableOpacity style={styles.button} onPress={()=> this.SavePhoto()}>
+                            <Text style={styles.textButton}>
                                 Aceptar
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=> this.descartarFoto()}>
-                            <Text>
+                        <TouchableOpacity  style={styles.button} onPress={()=> this.descartarFoto()}>
+                            <Text style={styles.textButton}>
                                 Rechazar
                             </Text>
                         </TouchableOpacity>
@@ -99,7 +99,7 @@ componentDidMount(){
                         ref={ metodos => this.metodosDeCamara = metodos} //definimos los metodos de camera para usar los metodos internos 
                     />
                     <TouchableOpacity style={styles.button} onPress = {()=> this.takePicture()}>
-                        <Text>Sacar foto</Text>
+                        <Text style={styles.textButton}>Sacar foto</Text>
                     </TouchableOpacity>
                 </View>
             :
@@ -113,7 +113,29 @@ componentDidMount(){
 }
 const styles= StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        paddingHorizontal:10,
+        marginTop: 10,
+        backgroundColor: "black"
+    },
+    title:{
+      fontSize:25,
+      marginTop:20,
+      marginBottom:30,
+      fontWeight: 'bold',
+      color: 'white',
+      textAlign: 'center'
+    },
+    button:{
+      padding: 10,
+      borderRadius: 4,
+      backgroundColor: '#dc3545',
+      margin: 10
+    },
+    textButton:{
+        fontWeight: 'bold',
+        color:'#fff',
+        textAlign: 'center'
     },
     camera: {
         flex: 1
